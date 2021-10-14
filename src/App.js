@@ -7,7 +7,7 @@ import {
   // decrementCreator,
   // incrementCreator,
 } from './store/countReducer'
-// import { fetchUsers } from './store/userReducer'
+import { fetchUsers } from './store/userReducer'
 
 const App = () => {
   const count = useSelector((state) => state.countReducer.count)
@@ -30,10 +30,7 @@ const App = () => {
         >
           ДЕКРЕМЕНТ--
         </button>
-        <button
-          className="btn"
-          // onClick={() => dispatch(fetchUsers())}
-        >
+        <button className="btn" onClick={() => dispatch(fetchUsers())}>
           ПОЛУЧИТЬ ЮЗЕРОВ--
         </button>
       </div>
