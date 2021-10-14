@@ -5,7 +5,7 @@ import { customerReducer } from './customReducer'
 
 const rootReducer = combineReducers({
   cash: cashReducer,
-  customer: customerReducer,
+  customers: customerReducer,
 })
 //!--- store
 
