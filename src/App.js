@@ -1,5 +1,11 @@
+import Bank from './components/Bank'
+
 function App() {
-  return <div></div>
+  return (
+    <div>
+      <Bank />
+    </div>
+  )
 }
 
 export default App
