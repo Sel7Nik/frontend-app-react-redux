@@ -1,6 +1,10 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addCustomerAction, removeCustomerAction } from '../store/customReducer'
+import { fetchCustomers } from '../asyncActions/customers'
+import {
+  addCustomersAction,
+  removeCustomerAction,
+} from '../store/customReducer'
 import css from './Bank.module.css'
 
 const Bank = () => {
@@ -16,15 +20,13 @@ const Bank = () => {
   const getCash = (cash) => {
     dispatch({ type: 'GET_CASH', payload: cash })
   }
+
   const addCustomer = (name) => {
-    const customer = {
-      name,
-      id: Date.now(),
-    }
-    dispatch(addCustomerAction(customer))
+    const customer = { name, id: Date.now() }
+    dispatch(addCustomersAction(customer))
   }
 
-  const removeCestomer = (customer) => {
+  const removeCustomer = (customer) => {
     dispatch(removeCustomerAction(customer.id))
   }
 
@@ -42,6 +44,8 @@ const Bank = () => {
           <button onClick={() => getCash(Number(prompt()))}>
             Удалить клиента
           </button>
+
+          <button onClick={() => dispatch(fetchCustomers())}>Получить</button>
         </div>
 
         <div>
@@ -49,7 +53,7 @@ const Bank = () => {
             <div>
               <h1>Список загружается</h1>
               {customers.map((customer) => (
-                <div onClick={() => removeCestomer(customer)} key={customer.id}>
+                <div onClick={() => removeCustomer(customer)} key={customer.id}>
                   {customer.name}
                 </div>
               ))}
